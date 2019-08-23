@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ import javax.mail.internet.MimeMessage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.InputStream;
 import java.util.*;
 
 @org.springframework.stereotype.Controller
@@ -95,8 +98,12 @@ public class Controller implements ErrorController {
 
         try
         {
-            ClassLoader classLoader = new Controller().getClass().getClassLoader();
-            File file = new File(classLoader.getResource("dropdown.txt").getFile());
+            //ClassLoader classLoader = new Controller().getClass().getClassLoader();
+            //File file = new File(classLoader.getResource("dropdown.txt").getFile());
+            Resource resource = new ClassPathResource("dropdown.txt");
+            InputStream input = resource.getInputStream();
+            File file = resource.getFile();
+
             BufferedReader reader = new BufferedReader(new FileReader(file.getPath()));
             String line;
             List<String> list = new ArrayList<>();
