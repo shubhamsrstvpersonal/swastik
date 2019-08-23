@@ -95,16 +95,8 @@ public class Controller implements ErrorController {
 
         try
         {
-            //ClassLoader classLoader = new Controller().getClass().getClassLoader();
-            //File file = new File(classLoader.getResource("dropdown.txt").getFile());
-//            Resource resource = new ClassPathResource("dropdown.txt");
-//            InputStream input = resource.getInputStream();
-//            File file = resource.getFile();
-
             Resource resource = new ClassPathResource("dropdown.txt");
             BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
-
-            //BufferedReader reader = new BufferedReader(new FileReader(file.getPath()));
             String line;
             List<String> list = new ArrayList<>();
             Map<String, Object> result = new HashMap<>();
