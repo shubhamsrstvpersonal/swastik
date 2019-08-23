@@ -101,7 +101,7 @@ public class Controller implements ErrorController {
 //            InputStream input = resource.getInputStream();
 //            File file = resource.getFile();
 
-            Resource resource = new ClassPathResource("data.sql");
+            Resource resource = new ClassPathResource("dropdown.txt");
             BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
 
             //BufferedReader reader = new BufferedReader(new FileReader(file.getPath()));
