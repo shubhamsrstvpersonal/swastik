@@ -16,10 +16,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.InputStream;
+import java.io.*;
 import java.util.*;
 
 @org.springframework.stereotype.Controller
@@ -100,11 +97,14 @@ public class Controller implements ErrorController {
         {
             //ClassLoader classLoader = new Controller().getClass().getClassLoader();
             //File file = new File(classLoader.getResource("dropdown.txt").getFile());
-            Resource resource = new ClassPathResource("dropdown.txt");
-            InputStream input = resource.getInputStream();
-            File file = resource.getFile();
+//            Resource resource = new ClassPathResource("dropdown.txt");
+//            InputStream input = resource.getInputStream();
+//            File file = resource.getFile();
 
-            BufferedReader reader = new BufferedReader(new FileReader(file.getPath()));
+            Resource resource = new ClassPathResource("data.sql");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
+
+            //BufferedReader reader = new BufferedReader(new FileReader(file.getPath()));
             String line;
             List<String> list = new ArrayList<>();
             Map<String, Object> result = new HashMap<>();
